@@ -1,9 +1,14 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'hello-world'
+    }
+
+  }
   stages {
     stage('Build') {
       steps {
-        sh 'cat /etc/os-release'
+        sh 'mvn clean install'
       }
     }
 
